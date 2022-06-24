@@ -15,7 +15,7 @@ console.log ('server work');
 response.end (JSON.stringify(REST, null, '\t'));
 
 
-}).listen(3000);
+}).listen(8000);
 // ДЛЯ СТАРТОВОГО RESTа ---------
 
 // ОТКРЫВАЕМ СОКЕТ ---------
