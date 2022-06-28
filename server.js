@@ -180,42 +180,126 @@ let updateChatInfo = {
 }
 
 let history = {
-  eventDateTime: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000'),
-  eventId: uuidv4(),
-  eventType: "history",
-  payload:
-  { events:
-  [
-    {
-      eventDateTime: "2021-06-06 18:18:44,213",
-      eventId: "329fee04-c3d9-4754-a2c1-468d2e32fda1",
-      message: {
-        authorName: "Ivan Ivanovich",
-        userType: "OPERATOR",
-        type: "text",
-        text: "Добрый день!",
-        quote: {
-          MessageId: "ee6bff78-279d-45f2-a8ad-632a2aba300a",
-          authorName: "Petr Petrovich",
-          text: "Добрый день, Иван Иванович!"
-        }
-      },
-      last: true
+  "eventDateTime": dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000'),
+  "eventId": uuidv4(),
+  "eventType": "history",
+  "payload": {
+    "events": [
+      {
+          "eventDateTime": "2022-06-29 15:20:22,213",
+          "eventId": "4f84c968-6847-40df-a118-0f028e2b895e",
+          "eventType": "messageFromClient",
+          "message": {
+            "MessageId": "4f84c968-6847-40df-a118-0f028e2b895e",
+            "userType": "CUSTOMER",
+            "type": "text",
+            "text": "..."
+          },
+          "last": true
       },
       {
-      eventDateTime: "2021-06-06 18:17:44,213",
-      eventId: "ee6bff78-279d-45f2-a8ad-632a2aba300a",
-      message: {
-        authorName: "Ivan Ivanovich",
-        userType: "CUSTOMER",
-        type: "text",
-        text: "У меня есть вопрос"
+        "eventDateTime": "2022-06-29 15:19:24,213",
+        "eventId": "ee6bff78-279d-45f2-a8ad-632a2aba301a",
+        "eventType": "messageToClient",
+        "message": {
+          "authorName": "Operator Operatorovich",
+          "MessageId": "ee6bff78-279d-45f2-a8ad-632a2aba301a",
+          "userType": "OPERATOR",
+          "type": "text",
+          "text": "Ну конечно продавать и выходить в рубль. Видите - растет?!",
+          "quote": {
+            "MessageId": "d2f0e43d-4362-40b8-b086-d7d64aa970a2",
+            "text": "И снова здравствуйте! Сегодня доллар по 52р./шт. что теперь мне делать?"
+          }
+        },
+        "last": false
       },
-      last: false
-      }
-      ]
+      {
+        "eventDateTime": "2022-06-29 15:18:44,213",
+        "eventId": "182c6bbd-856e-4e11-baa3-9c9239346418",
+        "eventType": "messageFromClient",
+        "message": {
+          "MessageId": "182c6bbd-856e-4e11-baa3-9c9239346418",
+          "userType": "CUSTOMER",
+          "type": "text",
+          "text": "Кажется, я потерял все рубли..."
+        },
+        "last": false
+      },
+      {
+          "eventDateTime": "2022-06-29 15:17:44,213",
+          "eventId": "d2f0e43d-4362-40b8-b086-d7d64aa970a2",
+          "eventType": "messageFromClient",
+          "message": {
+            "MessageId": "d2f0e43d-4362-40b8-b086-d7d64aa970a2",
+            "userType": "CUSTOMER",
+            "type": "text",
+            "text": "И снова здравствуйте! Сегодня доллар по 52р./шт. что теперь мне делать?",
+            "quote": {
+              "MessageId": "df89b311-4c4d-43a9-9ce3-47ad1098607f",
+              "authorName": "Petr Petrovich",
+              "text": "Здравствуйте! Конечно покупать! Иторически доллар всегда рос. Будет по 250!"
+            }
+          },
+          "last": false
+        },
+        {
+          "eventDateTime": "2022-03-11 10:17:22,113",
+          "eventId": "65d479cd-cf8a-41ee-87ab-8e177712cd60",
+          "eventType": "messageToClient",
+          "message": {
+            "authorName": "Operator Operatorovich",
+            "MessageId": "65d479cd-cf8a-41ee-87ab-8e177712cd60",
+            "userType": "OPERATOR",
+            "type": "text",
+            "text": "Не благодарите, всего доброго, держитесь там!",
+          },
+          "last": false
+        },
+        {
+          "eventDateTime": "2022-03-11 10:16:47,213",
+          "eventId": "88e43c1a-a27b-4567-8be3-165b8e0dcc79",
+          "eventType": "messageFromClient",
+          "message": {
+            "MessageId": "88e43c1a-a27b-4567-8be3-165b8e0dcc79",
+            "userType": "CUSTOMER",
+            "type": "text",
+            "text": "Спасибо, вы мне очень помогли! :)"
+          },
+          "last": false
+        },
+        {
+          "eventDateTime": "2022-03-11 10:15:44,213",
+          "eventId": "df89b311-4c4d-43a9-9ce3-47ad1098607f",
+          "eventType": "messageToClient",
+          "message": {
+            "authorName": "Operator Operatorovich",
+            "MessageId": "df89b311-4c4d-43a9-9ce3-47ad1098607f",
+            "userType": "OPERATOR",
+            "type": "text",
+            "text": "Здравствуйте! Конечно покупать! Иторически, доллар всегда рос. Будет по 250!",
+            "quote": {
+              "MessageId": "ee6bff78-279d-45f2-a8ad-632a2aba300a",
+              "text": "Добрый день! Доллар по 120 рублей, что мне делать?"
+            }
+          },
+          "last": false
+        },
+        {
+          "eventDateTime": "2022-03-11 10:10:44,213",
+          "eventId": "ee6bff78-279d-45f2-a8ad-632a2aba300a",
+          "eventType": "messageFromClient",
+          "message": {
+            "MessageId": "ee6bff78-279d-45f2-a8ad-632a2aba300a",
+            "userType": "CUSTOMER",
+            "type": "text",
+            "text": "Добрый день! Доллар по 120 рублей, что мне делать?"
+          },
+          "last": false
+        }
+    ]
   }
-};
+}
 
 let REST = {
 
