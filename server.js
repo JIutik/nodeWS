@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+//v2
 //var dt = new Date().toISOString().replace(/Z/, '+0000');
 const dayjs = require('dayjs')
 
@@ -7,18 +7,11 @@ var randomSentence = require('random-sentence');
 const { v4: uuidv4 } = require('uuid');
 const text = require('ryba-js')
 const { Guid } = require('js-guid');
-=======
-var dt = new Date().toISOString().replace(/Z/, '+0000');
-const { Guid } = require('js-guid');
-
-var randomSentence = require('random-sentence');
-const { v4: uuidv4 } = require('uuid');
-
->>>>>>> 01ec06402cff26d64e5db133da9505c28b9253e7
 
 
 
 // ДЛЯ СТАРТОВОГО RESTа ---------
+// рест
 const http = require('http');
 
 http.createServer((request, response) => {
@@ -41,10 +34,7 @@ function onConnect(wsClient) {
     setTimeout(function() {
       wsClient.send(JSON.stringify(updateChatInfo, null, '\t'));
   },  2000);
-<<<<<<< HEAD
   
-=======
->>>>>>> 01ec06402cff26d64e5db133da9505c28b9253e7
       setTimeout(function() {
           wsClient.send(JSON.stringify(history, null, '\t'));
       }, 4000);
@@ -63,14 +53,9 @@ function onConnect(wsClient) {
               case 'ping':
                 break;
                 default :
-<<<<<<< HEAD
                 
                 wsClient.send(JSON.stringify({
                   eventDateTime: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000'),
-=======
-                wsClient.send(JSON.stringify({
-                  eventDateTime: dt,
->>>>>>> 01ec06402cff26d64e5db133da9505c28b9253e7
                   eventId: jsonMessage.eventId,
                   eventType: "ok",
               }, null, '\t'));
@@ -80,16 +65,12 @@ function onConnect(wsClient) {
                     wsClient.send(jsonMessage.data);
                     break;
                 case 'ping':
-<<<<<<< HEAD
                   wsClient.send(JSON.stringify({
                     eventId: jsonMessage.eventId,
                     eventType: "pong"
                 }, null, '\t'));
 
                   //wsClient.send (JSON.stringify(PONG, null, '\t'));
-=======
-                  wsClient.send (JSON.stringify(PONG, null, '\t'));
->>>>>>> 01ec06402cff26d64e5db133da9505c28b9253e7
                     break;
                 case 'getChatInfo':
                     wsClient.send (JSON.stringify(updateChatInfo, null, '\t'));
@@ -99,7 +80,6 @@ function onConnect(wsClient) {
                     break;
 
                 case 'messageFromClient':
-<<<<<<< HEAD
                   
                   setTimeout(function() {
                     wsClient.send(JSON.stringify({
@@ -147,32 +127,17 @@ function onConnect(wsClient) {
                 wsClient.send(JSON.stringify({
                         eventType: "messageToClient",
                         eventDateTime: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000'),
-=======
-                  setTimeout(function() {
-                wsClient.send(JSON.stringify({
-                        eventType: "messageToClient",
-                        eventDateTime: dt,
->>>>>>> 01ec06402cff26d64e5db133da9505c28b9253e7
                         eventId: uuidv4(),
                         payload: {
                           message: {
                               messageId: uuidv4(),
-<<<<<<< HEAD
                               text: text(),
                               time: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000'),
-=======
-                              text: randomSentence(),
-                              time: dt,
->>>>>>> 01ec06402cff26d64e5db133da9505c28b9253e7
                               type: "text"
                           }
                       },
                     }, null, '\t'));
-<<<<<<< HEAD
                   }, 9000);
-=======
-                  }, 5000);
->>>>>>> 01ec06402cff26d64e5db133da9505c28b9253e7
                         break;
                   
                 default:
@@ -194,13 +159,8 @@ console.log('Сервер запущен на 9000 порту');
 
 
 let updateChatInfo = {
-<<<<<<< HEAD
   "eventDateTime": dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000'),
   "eventId": uuidv4(),
-=======
-  "eventDateTime": dt,
-  "eventId": "5654d497-73df-4b55-9a95-cea32f26001c",
->>>>>>> 01ec06402cff26d64e5db133da9505c28b9253e7
   "eventType": "updateChatInfo",
   "payload": {
     "splits": [
@@ -220,13 +180,8 @@ let updateChatInfo = {
 }
 
 let history = {
-<<<<<<< HEAD
   eventDateTime: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000'),
   eventId: uuidv4(),
-=======
-  eventDateTime: "2021-06-06 18:18:45,767",
-  eventId: "066d6558-8e0d-43cc-be85-99068a45f5fd",
->>>>>>> 01ec06402cff26d64e5db133da9505c28b9253e7
   eventType: "history",
   payload:
   { events:
@@ -297,11 +252,7 @@ let REST = {
     ], 
   "assistantCard": {"header": "Меняемся, чтобы стать удобнее", "text": "Виртуальный ассистент поможет решить вопрос, а если не справится - позовёт оператора.", "buttonText": "Спросить ассистента" },
   "wssKey": "hsBlbuDTkk24srzEOTBUlZAlC2g", 
-<<<<<<< HEAD
   "serverDatetime": dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000')
-=======
-  "serverDatetime": dt
->>>>>>> 01ec06402cff26d64e5db133da9505c28b9253e7
 }
 let PONG = {
     "eventId": uuidv4(),
