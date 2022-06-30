@@ -129,6 +129,7 @@ function onConnect(wsClient) {
                         eventDateTime: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000'),
                         eventId: uuidv4(),
                         payload: {
+                          userType: "OPERATOR"  
                           message: {
                               messageId: uuidv4(),
                               text: text(),
