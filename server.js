@@ -327,8 +327,8 @@ let REST = {
       "Не могу скачать выписку; Как сделать выписку; Нужна выписка по счету; Не понимаю как сделать выписку по счету и скачать ее; Как выгрузить выписку"
     ],
     "startButtons": [
-      {"buttonText":"Отправить платеж", "scenarionId": "cb_ckr_platej"},
-      {"buttonText":"Сформировать выписку", "scenarionId": "cb_ckr_vipiski"}
+      {"buttonText":"Отправить платеж", "scenarioId": "cb_ckr_platej"},
+      {"buttonText":"Сформировать выписку", "scenarioId": "cb_ckr_vipiski"}
     ],
   "startMessages": [ "Добрый день! Чем могу помочь?", "Все системы работают в штатном режиме" ], 
   "systemMessage": ["алЯрм"], 
