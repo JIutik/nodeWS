@@ -134,7 +134,8 @@ function onConnect(wsClient) {
                               messageId: uuidv4(),
                               text: text(),
                               time: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000'),
-                              type: "text"
+                              type: "text",
+                              authorName: "Евгений"
                           }
                       },
                     }, null, '\t'));
@@ -191,7 +192,7 @@ let history = {
           "eventId": "4f84c968-6847-40df-a118-0f028e2b895e",
           "eventType": "messageFromClient",
           "message": {
-            "MessageId": "4f84c968-6847-40df-a118-0f028e2b895e",
+            "messageId": "4f84c968-6847-40df-a118-0f028e2b895e",
             "userType": "CUSTOMER",
             "type": "text",
             "text": "..."
@@ -204,12 +205,12 @@ let history = {
         "eventType": "messageToClient",
         "message": {
           "authorName": "Operator Operatorovich",
-          "MessageId": "ee6bff78-279d-45f2-a8ad-632a2aba301a",
+          "messageId": "ee6bff78-279d-45f2-a8ad-632a2aba301a",
           "userType": "OPERATOR",
           "type": "text",
           "text": "Ну конечно продавать и выходить в рубль. Видите - растет?!",
           "quote": {
-            "MessageId": "d2f0e43d-4362-40b8-b086-d7d64aa970a2",
+            "messageId": "d2f0e43d-4362-40b8-b086-d7d64aa970a2",
             "text": "И снова здравствуйте! Сегодня доллар по 52р./шт. что теперь мне делать?"
           }
         },
@@ -220,7 +221,7 @@ let history = {
         "eventId": "182c6bbd-856e-4e11-baa3-9c9239346418",
         "eventType": "messageFromClient",
         "message": {
-          "MessageId": "182c6bbd-856e-4e11-baa3-9c9239346418",
+          "messageId": "182c6bbd-856e-4e11-baa3-9c9239346418",
           "userType": "CUSTOMER",
           "type": "text",
           "text": "Кажется, я потерял все рубли..."
@@ -232,12 +233,12 @@ let history = {
           "eventId": "d2f0e43d-4362-40b8-b086-d7d64aa970a2",
           "eventType": "messageFromClient",
           "message": {
-            "MessageId": "d2f0e43d-4362-40b8-b086-d7d64aa970a2",
+            "messageId": "d2f0e43d-4362-40b8-b086-d7d64aa970a2",
             "userType": "CUSTOMER",
             "type": "text",
             "text": "И снова здравствуйте! Сегодня доллар по 52р./шт. что теперь мне делать?",
             "quote": {
-              "MessageId": "df89b311-4c4d-43a9-9ce3-47ad1098607f",
+              "messageId": "df89b311-4c4d-43a9-9ce3-47ad1098607f",
               "authorName": "Petr Petrovich",
               "text": "Здравствуйте! Конечно покупать! Иторически доллар всегда рос. Будет по 250!"
             }
@@ -250,7 +251,7 @@ let history = {
           "eventType": "messageToClient",
           "message": {
             "authorName": "Operator Operatorovich",
-            "MessageId": "65d479cd-cf8a-41ee-87ab-8e177712cd60",
+            "messageId": "65d479cd-cf8a-41ee-87ab-8e177712cd60",
             "userType": "OPERATOR",
             "type": "text",
             "text": "Не благодарите, всего доброго, держитесь там!",
@@ -262,7 +263,7 @@ let history = {
           "eventId": "88e43c1a-a27b-4567-8be3-165b8e0dcc79",
           "eventType": "messageFromClient",
           "message": {
-            "MessageId": "88e43c1a-a27b-4567-8be3-165b8e0dcc79",
+            "messageId": "88e43c1a-a27b-4567-8be3-165b8e0dcc79",
             "userType": "CUSTOMER",
             "type": "text",
             "text": "Спасибо, вы мне очень помогли! :)"
@@ -275,12 +276,12 @@ let history = {
           "eventType": "messageToClient",
           "message": {
             "authorName": "Operator Operatorovich",
-            "MessageId": "df89b311-4c4d-43a9-9ce3-47ad1098607f",
+            "messageId": "df89b311-4c4d-43a9-9ce3-47ad1098607f",
             "userType": "OPERATOR",
             "type": "text",
             "text": "Здравствуйте! Конечно покупать! Иторически, доллар всегда рос. Будет по 250!",
             "quote": {
-              "MessageId": "ee6bff78-279d-45f2-a8ad-632a2aba300a",
+              "messageId": "ee6bff78-279d-45f2-a8ad-632a2aba300a",
               "text": "Добрый день! Доллар по 120 рублей, что мне делать?"
             }
           },
@@ -291,7 +292,7 @@ let history = {
           "eventId": "ee6bff78-279d-45f2-a8ad-632a2aba300a",
           "eventType": "messageFromClient",
           "message": {
-            "MessageId": "ee6bff78-279d-45f2-a8ad-632a2aba300a",
+            "messageId": "ee6bff78-279d-45f2-a8ad-632a2aba300a",
             "userType": "CUSTOMER",
             "type": "text",
             "text": "Добрый день! Доллар по 120 рублей, что мне делать?"
