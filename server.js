@@ -1,4 +1,4 @@
-//v2
+//v3
 //var dt = new Date().toISOString().replace(/Z/, '+0000');
 const dayjs = require('dayjs')
 
@@ -49,9 +49,28 @@ function onConnect(wsClient) {
         try {
             const jsonMessage = JSON.parse(message);
             console.log("MESSAGE", jsonMessage);
+
+              
             switch (jsonMessage.eventType) {
               case 'ping':
                 break;
+                
+              case 'messageFromClient':
+                if (jsonMessage.payload.message.text === "дай ошибку") {
+                wsClient.send(JSON.stringify({
+                  
+                    eventDateTime: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000'),
+                    eventId: uuidv4(),
+                    eventType: "error",
+                    payload: {
+                            errorCode: "BACKEND_ERROR",
+                            onEventId: jsonMessage.eventId,
+                            description: "Ошибка на уровне backend-систем"
+                    }
+                
+                }, null, '\t'))
+                return;}
+          
                 default :
                 
                 wsClient.send(JSON.stringify({
@@ -60,6 +79,7 @@ function onConnect(wsClient) {
                   eventType: "ok",
               }, null, '\t'));
                   break;}
+                
             switch (jsonMessage.eventType) {
                 case 'ECHO':
                     wsClient.send(jsonMessage.data);
@@ -125,17 +145,15 @@ function onConnect(wsClient) {
                           }, 6000);
                   setTimeout(function() {
                 wsClient.send(JSON.stringify({
-                        eventType: "messageToClient",
                         eventDateTime: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000'),
                         eventId: uuidv4(),
+                        eventType: "messageToClient",
                         payload: {
-                          userType: "OPERATOR",  
                           message: {
                               messageId: uuidv4(),
                               text: text(),
                               time: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000'),
-                              type: "text",
-                              authorName: "Евгений"
+                              type: "text"
                           }
                       },
                     }, null, '\t'));
@@ -146,6 +164,7 @@ function onConnect(wsClient) {
                     console.log('Неизвестная команда');
                     break;
             }
+          
         } catch (error) {
             console.log('Ошибка', error);
         }
@@ -192,7 +211,7 @@ let history = {
           "eventId": "4f84c968-6847-40df-a118-0f028e2b895e",
           "eventType": "messageFromClient",
           "message": {
-            "messageId": "4f84c968-6847-40df-a118-0f028e2b895e",
+            "MessageId": "4f84c968-6847-40df-a118-0f028e2b895e",
             "userType": "CUSTOMER",
             "type": "text",
             "text": "..."
@@ -205,12 +224,12 @@ let history = {
         "eventType": "messageToClient",
         "message": {
           "authorName": "Operator Operatorovich",
-          "messageId": "ee6bff78-279d-45f2-a8ad-632a2aba301a",
+          "MessageId": "ee6bff78-279d-45f2-a8ad-632a2aba301a",
           "userType": "OPERATOR",
           "type": "text",
           "text": "Ну конечно продавать и выходить в рубль. Видите - растет?!",
           "quote": {
-            "messageId": "d2f0e43d-4362-40b8-b086-d7d64aa970a2",
+            "MessageId": "d2f0e43d-4362-40b8-b086-d7d64aa970a2",
             "text": "И снова здравствуйте! Сегодня доллар по 52р./шт. что теперь мне делать?"
           }
         },
@@ -221,7 +240,7 @@ let history = {
         "eventId": "182c6bbd-856e-4e11-baa3-9c9239346418",
         "eventType": "messageFromClient",
         "message": {
-          "messageId": "182c6bbd-856e-4e11-baa3-9c9239346418",
+          "MessageId": "182c6bbd-856e-4e11-baa3-9c9239346418",
           "userType": "CUSTOMER",
           "type": "text",
           "text": "Кажется, я потерял все рубли..."
@@ -233,12 +252,12 @@ let history = {
           "eventId": "d2f0e43d-4362-40b8-b086-d7d64aa970a2",
           "eventType": "messageFromClient",
           "message": {
-            "messageId": "d2f0e43d-4362-40b8-b086-d7d64aa970a2",
+            "MessageId": "d2f0e43d-4362-40b8-b086-d7d64aa970a2",
             "userType": "CUSTOMER",
             "type": "text",
             "text": "И снова здравствуйте! Сегодня доллар по 52р./шт. что теперь мне делать?",
             "quote": {
-              "messageId": "df89b311-4c4d-43a9-9ce3-47ad1098607f",
+              "MessageId": "df89b311-4c4d-43a9-9ce3-47ad1098607f",
               "authorName": "Petr Petrovich",
               "text": "Здравствуйте! Конечно покупать! Иторически доллар всегда рос. Будет по 250!"
             }
@@ -251,7 +270,7 @@ let history = {
           "eventType": "messageToClient",
           "message": {
             "authorName": "Operator Operatorovich",
-            "messageId": "65d479cd-cf8a-41ee-87ab-8e177712cd60",
+            "MessageId": "65d479cd-cf8a-41ee-87ab-8e177712cd60",
             "userType": "OPERATOR",
             "type": "text",
             "text": "Не благодарите, всего доброго, держитесь там!",
@@ -263,7 +282,7 @@ let history = {
           "eventId": "88e43c1a-a27b-4567-8be3-165b8e0dcc79",
           "eventType": "messageFromClient",
           "message": {
-            "messageId": "88e43c1a-a27b-4567-8be3-165b8e0dcc79",
+            "MessageId": "88e43c1a-a27b-4567-8be3-165b8e0dcc79",
             "userType": "CUSTOMER",
             "type": "text",
             "text": "Спасибо, вы мне очень помогли! :)"
@@ -276,12 +295,12 @@ let history = {
           "eventType": "messageToClient",
           "message": {
             "authorName": "Operator Operatorovich",
-            "messageId": "df89b311-4c4d-43a9-9ce3-47ad1098607f",
+            "MessageId": "df89b311-4c4d-43a9-9ce3-47ad1098607f",
             "userType": "OPERATOR",
             "type": "text",
             "text": "Здравствуйте! Конечно покупать! Иторически, доллар всегда рос. Будет по 250!",
             "quote": {
-              "messageId": "ee6bff78-279d-45f2-a8ad-632a2aba300a",
+              "MessageId": "ee6bff78-279d-45f2-a8ad-632a2aba300a",
               "text": "Добрый день! Доллар по 120 рублей, что мне делать?"
             }
           },
@@ -292,7 +311,7 @@ let history = {
           "eventId": "ee6bff78-279d-45f2-a8ad-632a2aba300a",
           "eventType": "messageFromClient",
           "message": {
-            "messageId": "ee6bff78-279d-45f2-a8ad-632a2aba300a",
+            "MessageId": "ee6bff78-279d-45f2-a8ad-632a2aba300a",
             "userType": "CUSTOMER",
             "type": "text",
             "text": "Добрый день! Доллар по 120 рублей, что мне делать?"
@@ -329,8 +348,8 @@ let REST = {
       "Не могу скачать выписку; Как сделать выписку; Нужна выписка по счету; Не понимаю как сделать выписку по счету и скачать ее; Как выгрузить выписку"
     ],
     "startButtons": [
-      {"buttonText":"Отправить платеж", "scenarioId": "cb_ckr_platej"},
-      {"buttonText":"Сформировать выписку", "scenarioId": "cb_ckr_vipiski"}
+      {"buttonText":"Отправить платеж", "scenarionId": "cb_ckr_platej"},
+      {"buttonText":"Сформировать выписку", "scenarionId": "cb_ckr_vipiski"}
     ],
   "startMessages": [ "Добрый день! Чем могу помочь?", "Все системы работают в штатном режиме" ], 
   "systemMessage": ["алЯрм"], 
