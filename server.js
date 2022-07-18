@@ -16,7 +16,42 @@ const http = require('http');
 
 http.createServer((request, response) => {
 console.log ('server work');
-response.end (JSON.stringify(REST, null, '\t'));
+response.end (JSON.stringify({ 
+  parameters: {
+    typingEnabled: true,
+    typingDelay: 3,
+    previewEnabled: true,
+    deliveryStateEnabled: true,
+    ratingCloseTimeout: 120,
+    fileUploadTimeout: 120,
+    fileCustomerUrl: "https://csc-ift.csctest.sberbank.ru/chat_cb/file/uploadToEcm",
+    redirectTechSupportTopicId: 53399,
+    widgetMetricsUrl: "https://iftmpclickstream.testonline.sberbank.ru:8098/metrics/partners",
+    ratingEnabled: true,
+    chatHistoryEnabled: false,
+    fileUploadEnabled: false,
+    rtdmEnabled: false,
+    startChatButtonsEnabled: true,
+    textAssistEnabled: true,
+    systemMessageEnabled: true,
+    redirectToAssistantCardEnabled : true
+  },
+    suggestions: [
+    "Как пополнить счет; Как пополнить баланс на счете; Как внести нал на счет; Как внести кэш на свой счет; Внесение налички на счет",
+    "Не могу скачать выписку; Как сделать выписку; Нужна выписка по счету; Не понимаю как сделать выписку по счету и скачать ее; Как выгрузить выписку"
+  ],
+    startButtons: [
+    {buttonText:"Отправить платеж", "scenarioId": "cb_ckr_platej"},
+    {buttonText:"Сформировать выписку", "scenarioId": "cb_ckr_vipiski"}
+  ],
+startMessages: [ "Добрый день! Чем могу помочь?", "Все системы работают в штатном режиме" ], 
+systemMessage: ["алЯрм"], 
+letterMapping: ["Уважаемый клиент! Вы можете решить свой вопрос в чате.", "Уважаемый клиент! Для быстрого решения"
+  ], 
+assistantCard: {"header": "Меняемся, чтобы стать удобнее", "text": "Виртуальный ассистент поможет решить вопрос, а если не справится - позовёт оператора.", "buttonText": "Спросить ассистента" },
+wssKey: "hsBlbuDTkk24srzEOTBUlZAlC2g", 
+serverDatetime: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000')
+}, null, '\t'));
 
 
 }).listen(8000);
