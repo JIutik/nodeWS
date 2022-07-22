@@ -1,4 +1,4 @@
-//v2
+//v3
 //var dt = new Date().toISOString().replace(/Z/, '+0000');
 const dayjs = require('dayjs')
 
@@ -20,6 +20,7 @@ response.end (JSON.stringify({
   parameters: {
     typingEnabled: true,
     typingDelay: 3,
+    typingDelta: 1,
     previewEnabled: true,
     deliveryStateEnabled: true,
     ratingCloseTimeout: 120,
@@ -28,13 +29,13 @@ response.end (JSON.stringify({
     redirectTechSupportTopicId: 53399,
     widgetMetricsUrl: "https://iftmpclickstream.testonline.sberbank.ru:8098/metrics/partners",
     ratingEnabled: true,
-    chatHistoryEnabled: false,
-    fileUploadEnabled: false,
+    chatHistoryEnabled: true,
+    fileUploadEnabled: true,
     rtdmEnabled: false,
     startChatButtonsEnabled: true,
     textAssistEnabled: true,
     systemMessageEnabled: true,
-    redirectToAssistantCardEnabled : true
+    redirectToAssistantCardEnabled: true
   },
     suggestions: [
     "Как пополнить счет; Как пополнить баланс на счете; Как внести нал на счет; Как внести кэш на свой счет; Внесение налички на счет",
@@ -48,8 +49,8 @@ startMessages: [ "Добрый день! Чем могу помочь?", "Все
 systemMessage: ["алЯрм"], 
 letterMapping: ["Уважаемый клиент! Вы можете решить свой вопрос в чате.", "Уважаемый клиент! Для быстрого решения"
   ], 
-assistantCard: {"header": "Меняемся, чтобы стать удобнее", "text": "Виртуальный ассистент поможет решить вопрос, а если не справится - позовёт оператора.", "buttonText": "Спросить ассистента" },
-wssKey: "hsBlbuDTkk24srzEOTBUlZAlC2g", 
+assistantCard: {header: "Меняемся, чтобы стать удобнее", text: "Виртуальный ассистент поможет решить вопрос, а если не справится - позовёт оператора.", buttonText: "Спросить ассистента" },
+wssKey: "hsBlbuDTkk24srzEOTBUlZAlC2g",
 serverDatetime: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000')
 }, null, '\t'));
 
@@ -69,10 +70,80 @@ function onConnect(wsClient) {
     setTimeout(function() {
       wsClient.send(JSON.stringify(updateChatInfo, null, '\t'));
   },  2000);
-  
-      setTimeout(function() {
-          wsClient.send(JSON.stringify(history, null, '\t'));
-      }, 4000);
+    setTimeout(function() {
+        wsClient.send(JSON.stringify({      
+          eventDateTime: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000'),
+          eventId: uuidv4(),
+          eventType: "history",
+          payload: {
+            "lastMessage": true,
+            "messages": [
+              {
+                "messageId": "b497d684-93d1-4e69-9536-f928de1552cf",
+                "time": "2021-06-06 18:29:11,333+0000",
+                "userType": "CUSTOMER",
+                "text": "Спасибо! Вы мне очень помогли! Я рад, что Сбер оперативно решает вопросы своих клиентов :)",
+                "messageStatus": "messageRead",
+                "quote": {
+                  "messageId": "d0028f40-8b45-4f99-b63d-fceb670c4d4d",
+                  "text": "Согласно вашему документу мы внесли изменение в реквизиты Вашей компании. Теперь ваша проблема 1 решена. Всего доброго!",
+                  "authorName": "Евгений"
+                }
+              },
+              {
+                "messageId": "d0028f40-8b45-4f99-b63d-fceb670c4d4d",
+                "time": "2021-06-06 18:25:33,223+0000",
+                "userType": "OPERATOR",
+                "authorName": "Евгений",
+                "text": "Согласно вашему документу мы внесли изменение в реквизиты Вашей компании. Теперь ваша проблема 1 решена. Всего доброго!",
+                "messageStatus": "messageRead"
+              },
+              {
+                "messageId": "9f000409-aed6-45c3-b07f-a76373bf2565",
+                "time": "2021-06-06 18:21:22,111+0000",
+                "userType": "CUSTOMER",
+                "messageStatus": "messageRead",
+                "fileInfo": {
+                  "ecmId": "5aab1ca0-5d28-413a-a100-6b0cc178d5af",
+                  "name": "document.pdf",
+                  "size": "10485760"
+                }
+              },
+              {
+                "messageId": "b7095bba-73b9-4c23-907e-1a5a088441bc",
+                "time": "2021-06-06 18:20:44,555+0000",
+                "userType": "CUSTOMER",
+                "text": "Хорошо, я сейчас подготовлю и направлю документ.",
+                "messageStatus": "messageRead",
+                "quote": {
+                  "messageId": "c90e34e3-c1e3-4ae7-bf22-e11531003e3f",
+                  "text": "Здравствуйте! Для решения Вашего вопроса необходимо предоставить документ №1. После этого, мы сможем решить Вашу проблему.",
+                  "authorName": "Евгений"
+                }
+              },
+              {
+                "messageId": "c90e34e3-c1e3-4ae7-bf22-e11531003e3f",
+                "time": "2021-06-06 18:19:41,104+0000",
+                "userType": "OPERATOR",
+                "authorName": "Евгений",
+                "text": "Здравствуйте! Для решения Вашего вопроса необходимо предоставить документ №1. После этого, мы сможем решить Вашу проблему.",
+                "messageStatus": "messageRead",
+                "quote": {
+                  "messageId": "c22da6c0-40f3-4794-8153-e68f092c74a8",
+                  "text": "Добрый день! У меня есть проблема номер 1"
+                }
+              },
+              {
+                "messageId": "c22da6c0-40f3-4794-8153-e68f092c74a8",
+                "time": "2021-06-06 18:18:44,213+0000",
+                "userType": "CUSTOMER",
+                "text": "Добрый день! У меня есть проблема номер 1",
+                "messageStatus": "messageRead"
+              }
+            ]
+          }
+      }, null, '\t'));
+        }, 4000);
     //wsClient.send('Привет');
 
     wsClient.on('close', function() {
@@ -102,7 +173,6 @@ function onConnect(wsClient) {
                             onEventId: jsonMessage.eventId,
                             description: "Ошибка на уровне backend-систем"
                     }
-                
                 }, null, '\t'))
                 return;}
           
@@ -127,10 +197,46 @@ function onConnect(wsClient) {
 
                   //wsClient.send (JSON.stringify(PONG, null, '\t'));
                     break;
-                case 'getChatInfo':
-                    wsClient.send (JSON.stringify(updateChatInfo, null, '\t'));
+                case 'getHistory':
                     setTimeout(function() {
-                        wsClient.send(JSON.stringify(history, null, '\t'));
+                      wsClient.send(JSON.stringify({
+                  
+                        eventDateTime: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000'),
+                        eventId: uuidv4(),
+                        eventType: "history",
+                        payload: {
+                          "lastMessage": true,
+                          "messages": [
+                            {
+                              "messageId": "b497d684-93d1-4e69-9536-f928de1552cf",
+                              "time": "2021-05-05 17:18:51,222+0000",
+                              "userType": "CUSTOMER",
+                              "text": "Спасибо! Все отлично, мой вопрос №0 решен!",
+                              "messageStatus": "messageRead",
+                              "quote": {
+                                "messageId": "ecd7d127-ef93-47a5-8835-380e1c98325d",
+                                "text": "Уважаемый клиент, я решил Ваш вопрос №0",
+                                "authorName": "Дмитрий"
+                              }
+                            },
+                            {
+                              "messageId": "ecd7d127-ef93-47a5-8835-380e1c98325d",
+                              "time": "2021-05-05 17:17:41,222+0000",
+                              "userType": "OPERATOR",
+                              "authorName": "Дмитрий",
+                              "text": "Уважаемый клиент, я решил Ваш вопрос №0",
+                              "messageStatus": "messageRead"
+                            },
+                            {
+                              "messageId": "2904d625-ff32-4d8f-bb33-463765aa383b",
+                              "time": "2021-05-05 17:15:44,555+0000",
+                              "userType": "CUSTOMER",
+                              "text": "У меня есть вопрос №0",
+                              "messageStatus": "messageRead"
+                            }
+                          ]
+                        }
+                    }, null, '\t'));
                     }, 3000);
                     break;
 
@@ -187,7 +293,7 @@ function onConnect(wsClient) {
                           userType: "OPERATOR",
                           message: {
                               messageId: uuidv4(),
-                              text: text(),
+                              text: "Готов ответить на ваш вопрос и решить проблему",
                               time: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000'),
                               type: "text",
                               authorName: "Евгений"
@@ -238,126 +344,78 @@ let updateChatInfo = {
 }
 
 let history = {
-  "eventDateTime": dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000'),
-  "eventId": uuidv4(),
-  "eventType": "history",
-  "payload": {
-    "events": [
-      {
-          "eventDateTime": "2022-06-29 15:20:22,213",
-          "eventId": "4f84c968-6847-40df-a118-0f028e2b895e",
-          "eventType": "messageFromClient",
-          "message": {
-            "messageId": "4f84c968-6847-40df-a118-0f028e2b895e",
-            "userType": "CUSTOMER",
-            "type": "text",
-            "text": "..."
-          },
-          "last": true
-      },
-      {
-        "eventDateTime": "2022-06-29 15:19:24,213",
-        "eventId": "ee6bff78-279d-45f2-a8ad-632a2aba301a",
-        "eventType": "messageToClient",
-        "message": {
-          "authorName": "Operator Operatorovich",
-          "messageId": "ee6bff78-279d-45f2-a8ad-632a2aba301a",
-          "userType": "OPERATOR",
-          "type": "text",
-          "text": "Ну конечно продавать и выходить в рубль. Видите - растет?!",
+    "eventDateTime": "2021-06-06Т18:18:45,767+0000",
+    "eventId": "066d6558-8e0d-43cc-be85-99068a45f5fd",
+    "eventType": "history",
+    "payload": {
+      "lastMessage": true,
+      "messages": [
+        {
+          "messageId": "b497d684-93d1-4e69-9536-f928de1552cf",
+          "time": "2021-06-06 18:29:11,333+0000",
+          "userType": "CUSTOMER",
+          "text": "Спасибо! Вы мне очень помогли! Я рад, что Сбер оперативно решает вопросы своих клиентов :)",
+          "messageStatus": "messageRead",
           "quote": {
-            "messageId": "d2f0e43d-4362-40b8-b086-d7d64aa970a2",
-            "text": "И снова здравствуйте! Сегодня доллар по 52р./шт. что теперь мне делать?"
+            "messageId": "d0028f40-8b45-4f99-b63d-fceb670c4d4d",
+            "text": "Согласно вашему документу мы внесли изменение в реквизиты Вашей компании. Теперь ваша проблема 1 решена. Всего доброго!",
+            "authorName": "Евгений"
           }
         },
-        "last": false
-      },
-      {
-        "eventDateTime": "2022-06-29 15:18:44,213",
-        "eventId": "182c6bbd-856e-4e11-baa3-9c9239346418",
-        "eventType": "messageFromClient",
-        "message": {
-          "messageId": "182c6bbd-856e-4e11-baa3-9c9239346418",
+        {
+          "messageId": "d0028f40-8b45-4f99-b63d-fceb670c4d4d",
+          "time": "2021-06-06 18:25:33,223+0000",
+          "userType": "OPERATOR",
+          "authorName": "Евгений",
+          "text": "Согласно вашему документу мы внесли изменение в реквизиты Вашей компании. Теперь ваша проблема 1 решена. Всего доброго!",
+          "messageStatus": "messageRead"
+        },
+        {
+          "messageId": "9f000409-aed6-45c3-b07f-a76373bf2565",
+          "time": "2021-06-06 18:21:22,111+0000",
           "userType": "CUSTOMER",
-          "type": "text",
-          "text": "Кажется, я потерял все рубли..."
-        },
-        "last": false
-      },
-      {
-          "eventDateTime": "2022-06-29 15:17:44,213",
-          "eventId": "d2f0e43d-4362-40b8-b086-d7d64aa970a2",
-          "eventType": "messageFromClient",
-          "message": {
-            "messageId": "d2f0e43d-4362-40b8-b086-d7d64aa970a2",
-            "userType": "CUSTOMER",
-            "type": "text",
-            "text": "И снова здравствуйте! Сегодня доллар по 52р./шт. что теперь мне делать?",
-            "quote": {
-              "messageId": "df89b311-4c4d-43a9-9ce3-47ad1098607f",
-              "authorName": "Petr Petrovich",
-              "text": "Здравствуйте! Конечно покупать! Иторически доллар всегда рос. Будет по 250!"
-            }
-          },
-          "last": false
+          "messageStatus": "messageRead",
+          "fileInfo": {
+            "ecmId": "5aab1ca0-5d28-413a-a100-6b0cc178d5af",
+            "name": "document.pdf",
+            "size": "10485760"
+          }
         },
         {
-          "eventDateTime": "2022-03-11 10:17:22,113",
-          "eventId": "65d479cd-cf8a-41ee-87ab-8e177712cd60",
-          "eventType": "messageToClient",
-          "message": {
-            "authorName": "Operator Operatorovich",
-            "messageId": "65d479cd-cf8a-41ee-87ab-8e177712cd60",
-            "userType": "OPERATOR",
-            "type": "text",
-            "text": "Не благодарите, всего доброго, держитесь там!",
-          },
-          "last": false
+          "messageId": "b7095bba-73b9-4c23-907e-1a5a088441bc",
+          "time": "2021-06-06 18:20:44,555+0000",
+          "userType": "CUSTOMER",
+          "text": "Хорошо, я сейчас подготовлю и направлю документ.",
+          "messageStatus": "messageRead",
+          "quote": {
+            "messageId": "c90e34e3-c1e3-4ae7-bf22-e11531003e3f",
+            "text": "Здравствуйте! Для решения Вашего вопроса необходимо предоставить документ №1. После этого, мы сможем решить Вашу проблему.",
+            "authorName": "Евгений"
+          }
         },
         {
-          "eventDateTime": "2022-03-11 10:16:47,213",
-          "eventId": "88e43c1a-a27b-4567-8be3-165b8e0dcc79",
-          "eventType": "messageFromClient",
-          "message": {
-            "messageId": "88e43c1a-a27b-4567-8be3-165b8e0dcc79",
-            "userType": "CUSTOMER",
-            "type": "text",
-            "text": "Спасибо, вы мне очень помогли! :)"
-          },
-          "last": false
+          "messageId": "c90e34e3-c1e3-4ae7-bf22-e11531003e3f",
+          "time": "2021-06-06 18:19:41,104+0000",
+          "userType": "OPERATOR",
+          "authorName": "Евгений",
+          "text": "Здравствуйте! Для решения Вашего вопроса необходимо предоставить документ №1. После этого, мы сможем решить Вашу проблему.",
+          "messageStatus": "messageRead",
+          "quote": {
+            "messageId": "c22da6c0-40f3-4794-8153-e68f092c74a8",
+            "text": "Добрый день! У меня есть проблема номер 1"
+          }
         },
         {
-          "eventDateTime": "2022-03-11 10:15:44,213",
-          "eventId": "df89b311-4c4d-43a9-9ce3-47ad1098607f",
-          "eventType": "messageToClient",
-          "message": {
-            "authorName": "Operator Operatorovich",
-            "messageId": "df89b311-4c4d-43a9-9ce3-47ad1098607f",
-            "userType": "OPERATOR",
-            "type": "text",
-            "text": "Здравствуйте! Конечно покупать! Иторически, доллар всегда рос. Будет по 250!",
-            "quote": {
-              "messageId": "ee6bff78-279d-45f2-a8ad-632a2aba300a",
-              "text": "Добрый день! Доллар по 120 рублей, что мне делать?"
-            }
-          },
-          "last": false
-        },
-        {
-          "eventDateTime": "2022-03-11 10:10:44,213",
-          "eventId": "ee6bff78-279d-45f2-a8ad-632a2aba300a",
-          "eventType": "messageFromClient",
-          "message": {
-            "messageId": "ee6bff78-279d-45f2-a8ad-632a2aba300a",
-            "userType": "CUSTOMER",
-            "type": "text",
-            "text": "Добрый день! Доллар по 120 рублей, что мне делать?"
-          },
-          "last": false
+          "messageId": "c22da6c0-40f3-4794-8153-e68f092c74a8",
+          "time": "2021-06-06 18:18:44,213+0000",
+          "userType": "CUSTOMER",
+          "text": "Добрый день! У меня есть проблема номер 1",
+          "messageStatus": "messageRead"
         }
-    ]
+      ]
+    }
   }
-}
+
 
 let REST = {
 
@@ -400,3 +458,42 @@ let PONG = {
     "eventId": uuidv4(),
     "eventType": "pong"
 };
+
+let historyPage = {
+
+  "eventDateTime": "2021-06-06Т18:18:45,767+0000",
+  "eventId": "066d6558-8e0d-43cc-be85-99068a45f5fd",
+  "eventType": "history",
+  "payload": {
+    "lastMessage": true,
+    "messages": [
+      {
+        "messageId": "b497d684-93d1-4e69-9536-f928de1552cf",
+        "time": "2021-05-05 17:18:51,222+0000",
+        "userType": "CUSTOMER",
+        "text": "Спасибо! Все отлично, мой вопрос №0 решен!",
+        "messageStatus": "messageRead",
+        "quote": {
+          "messageId": "ecd7d127-ef93-47a5-8835-380e1c98325d",
+          "text": "Уважаемый клиент, я решил Ваш вопрос №0",
+          "authorName": "Дмитрий"
+        }
+      },
+      {
+        "messageId": "ecd7d127-ef93-47a5-8835-380e1c98325d",
+        "time": "2021-05-05 17:17:41,222+0000",
+        "userType": "OPERATOR",
+        "authorName": "Дмитрий",
+        "text": "Уважаемый клиент, я решил Ваш вопрос №0",
+        "messageStatus": "messageRead"
+      },
+      {
+        "messageId": "2904d625-ff32-4d8f-bb33-463765aa383b",
+        "time": "2021-05-05 17:15:44,555+0000",
+        "userType": "CUSTOMER",
+        "text": "У меня есть вопрос №0",
+        "messageStatus": "messageRead"
+      }
+    ]
+  }
+}
