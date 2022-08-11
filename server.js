@@ -76,7 +76,7 @@ function onConnect(wsClient) {
           eventId: uuidv4(),
           eventType: "history",
           payload: {
-            "lastMessage": true,
+            "lastMessage": false,
             "messages": [
               {
                 "messageId": "b497d684-93d1-4e69-9536-f928de1552cf",
