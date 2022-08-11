@@ -80,7 +80,7 @@ function onConnect(wsClient) {
             "messages": [
               {
                 "messageId": "b497d684-93d1-4e69-9536-f928de1552cf",
-                "time": "2021-06-06T18:29:11,333+0000",
+                "time": "2021-06-06T18:29:11.333+0000",
                 "userType": "CUSTOMER",
                 "text": "Спасибо! Вы мне очень помогли! Я рад, что Сбер оперативно решает вопросы своих клиентов :)",
                 "messageStatus": "messageRead",
@@ -92,7 +92,7 @@ function onConnect(wsClient) {
               },
               {
                 "messageId": "d0028f40-8b45-4f99-b63d-fceb670c4d4d",
-                "time": "2021-06-06T18:25:33,223+0000",
+                "time": "2021-06-06T18:25:33.223+0000",
                 "userType": "OPERATOR",
                 "authorName": "Евгений",
                 "text": "Согласно вашему документу мы внесли изменение в реквизиты Вашей компании. Теперь ваша проблема 1 решена. Всего доброго!",
@@ -100,7 +100,7 @@ function onConnect(wsClient) {
               },
               {
                 "messageId": "9f000409-aed6-45c3-b07f-a76373bf2565",
-                "time": "2021-06-06T18:21:22,111+0000",
+                "time": "2021-06-06T18:21:22.111+0000",
                 "userType": "CUSTOMER",
                 "messageStatus": "messageRead",
                 "fileInfo": {
@@ -111,7 +111,7 @@ function onConnect(wsClient) {
               },
               {
                 "messageId": "b7095bba-73b9-4c23-907e-1a5a088441bc",
-                "time": "2021-06-06T18:20:44,555+0000",
+                "time": "2021-06-06T18:20:44.555+0000",
                 "userType": "CUSTOMER",
                 "text": "Хорошо, я сейчас подготовлю и направлю документ.",
                 "messageStatus": "messageRead",
@@ -123,7 +123,7 @@ function onConnect(wsClient) {
               },
               {
                 "messageId": "c90e34e3-c1e3-4ae7-bf22-e11531003e3f",
-                "time": "2021-06-06T18:19:41,104+0000",
+                "time": "2021-06-06T18:19:41.104+0000",
                 "userType": "OPERATOR",
                 "authorName": "Евгений",
                 "text": "Здравствуйте! Для решения Вашего вопроса необходимо предоставить документ №1. После этого, мы сможем решить Вашу проблему.",
@@ -135,7 +135,7 @@ function onConnect(wsClient) {
               },
               {
                 "messageId": "c22da6c0-40f3-4794-8153-e68f092c74a8",
-                "time": "2021-06-06T18:18:44,213+0000",
+                "time": "2021-06-06T18:18:44.213+0000",
                 "userType": "CUSTOMER",
                 "text": "Добрый день! У меня есть проблема номер 1",
                 "messageStatus": "messageRead"
@@ -209,7 +209,7 @@ function onConnect(wsClient) {
                           "messages": [
                             {
                               "messageId": "b497d684-93d1-4e69-9536-f928de1552cf",
-                              "time": "2021-05-05T17:18:51,222+0000",
+                              "time": "2021-05-05T17:18:51.222+0000",
                               "userType": "CUSTOMER",
                               "text": "Спасибо! Все отлично, мой вопрос №0 решен!",
                               "messageStatus": "messageRead",
@@ -221,7 +221,7 @@ function onConnect(wsClient) {
                             },
                             {
                               "messageId": "ecd7d127-ef93-47a5-8835-380e1c98325d",
-                              "time": "2021-05-05T17:17:41,222+0000",
+                              "time": "2021-05-05T17:17:41.222+0000",
                               "userType": "OPERATOR",
                               "authorName": "Дмитрий",
                               "text": "Уважаемый клиент, я решил Ваш вопрос №0",
@@ -229,7 +229,7 @@ function onConnect(wsClient) {
                             },
                             {
                               "messageId": "2904d625-ff32-4d8f-bb33-463765aa383b",
-                              "time": "2021-05-05T17:15:44,555+0000",
+                              "time": "2021-05-05T17:15:44.555+0000",
                               "userType": "CUSTOMER",
                               "text": "У меня есть вопрос №0",
                               "messageStatus": "messageRead"
