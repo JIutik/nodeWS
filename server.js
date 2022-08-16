@@ -220,6 +220,18 @@ function onConnect(wsClient) {
                               }
                             },
                             {
+                              "messageId": "b22a3db5-56cc-4526-8304-4b7ef358b5c9",
+                              "time": "2021-05-05T17:18:50.222+0000",
+                              "userType": "CUSTOMER",
+                              "text": "Спасибо! Все отлично, мой вопрос №0 решен!",
+                              "messageStatus": "messageRead",
+                              "quote": {
+                                "messageId": "ecd7d127-ef93-47a5-8835-380e1c98325d",
+                                "text": "Уважаемый клиент, я решил Ваш вопрос №0",
+                                "authorName": "Дмитрий"
+                              }
+                            },
+                            {
                               "messageId": "ecd7d127-ef93-47a5-8835-380e1c98325d",
                               "time": "2021-05-05T17:17:41.222+0000",
                               "userType": "OPERATOR",
@@ -229,6 +241,13 @@ function onConnect(wsClient) {
                             },
                             {
                               "messageId": "2904d625-ff32-4d8f-bb33-463765aa383b",
+                              "time": "2021-05-05T17:15:45.555+0000",
+                              "userType": "CUSTOMER",
+                              "text": "У меня есть вопрос №0",
+                              "messageStatus": "messageRead"
+                            },
+                            {
+                              "messageId": "78e426a6-c47c-4dcf-a450-3762200b3c20",
                               "time": "2021-05-05T17:15:44.555+0000",
                               "userType": "CUSTOMER",
                               "text": "У меня есть вопрос №0",
