@@ -26,7 +26,7 @@ response.end (JSON.stringify({
     ratingCloseTimeout: 120,
     fileUploadTimeout: 120,
     fileCustomerUrl: "https://csc-ift.csctest.sberbank.ru/chat_cb/file/uploadToEcm",
-    redirectTechSupportTopicId: 53399,
+    redirectTechSupportTopicId: "53399",
     widgetMetricsUrl: "https://iftmpclickstream.testonline.sberbank.ru:8098/metrics/partners",
     ratingEnabled: true,
     chatHistoryEnabled: true,
