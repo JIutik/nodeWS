@@ -162,7 +162,7 @@ function onConnect(wsClient) {
                 break;
                 
               case 'messageFromClient':
-                if (jsonMessage.payload.message.text === "дай ошибку") {
+                if (jsonMessage.payload.message.text === "дай ошибку" || jsonMessage.payload.message.text === "Дай ошибку") {
                 wsClient.send(JSON.stringify({
                   
                     eventDateTime: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000'),
