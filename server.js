@@ -45,13 +45,13 @@ response.end (JSON.stringify({
     {buttonText:"Отправить платеж", "scenarioId": "cb_ckr_platej"},
     {buttonText:"Сформировать выписку", "scenarioId": "cb_ckr_vipiski"}
   ],
-startMessages: [ "Добрый день! Чем могу помочь?", "Все системы работают в штатном режиме" ], 
-systemMessage: ["алЯрм"], 
+startMessages: ["Добрый день! Чем могу помочь?"], 
+systemMessage: ["Уважаемые клиенты! Сбербанк и все его системы работают в штатном режиме,  вам доступны ваши средства и сервисы в полном объёме."], 
 letterMapping: ["Уважаемый клиент! Вы можете решить свой вопрос в чате.", "Уважаемый клиент! Для быстрого решения"
   ], 
 assistantCard: {header: "Меняемся, чтобы стать удобнее", text: "Виртуальный ассистент поможет решить вопрос, а если не справится - позовёт оператора.", buttonText: "Спросить ассистента" },
 wssKey: "hsBlbuDTkk24srzEOTBUlZAlC2g",
-serverDatetime: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000')
+serverDateTime: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS+0000')
 }, null, '\t'));
 
 
