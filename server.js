@@ -207,6 +207,30 @@ function onConnect(wsClient) {
                         payload: {
                           "lastMessage": true,
                           "messages": [
+                             {
+                              "messageId": "b497d684-93d1-4e69-9536-f928de1552cf",
+                              "time": "2021-05-05T17:18:53.222+0000",
+                              "userType": "CUSTOMER",
+                              "text": "Дубль сообщения, для отладки1",
+                              "messageStatus": "messageRead",
+                              "quote": {
+                                "messageId": "ecd7d127-ef93-47a5-8835-380e1c98325d",
+                                "text": "Дубль сообщния, для отладки1",
+                                "authorName": "Дмитрий"
+                              }
+                            },
+                             {
+                              "messageId": "508f254c-2fb7-426d-9b8a-fd5e81e0c7a4",
+                              "time": "2021-05-05T17:18:52.222+0000",
+                              "userType": "CUSTOMER",
+                              "text": "Дубль сообщения, для отладки2",
+                              "messageStatus": "messageRead",
+                              "quote": {
+                                "messageId": "ecd7d127-ef93-47a5-8835-380e1c98325d",
+                                "text": "Дубль сообщния, для отладки2",
+                                "authorName": "Дмитрий"
+                              }
+                            },
                             {
                               "messageId": "b22a3db5-56cc-4526-8304-4b7ef358b5c9",
                               "time": "2021-05-05T17:18:50.222+0000",
